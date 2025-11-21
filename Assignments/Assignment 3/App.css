@@ -1,0 +1,641 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+/* =========================================
+   GLOBAL VARIABLES & RESET
+   ========================================= */
+:root {
+  --primary-color: #6366f1; /* Indigo */
+  --primary-hover: #4f46e5;
+  --secondary-color: #ec4899; /* Pink */
+  --bg-gradient: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+  --card-bg: #ffffff;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif; /* Modern font stack */
+  background: var(--bg-gradient);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: var(--text-dark);
+}
+
+/* =========================================
+   ANIMATIONS (KEYFRAMES)
+   ========================================= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+}
+
+/* =========================================
+   CONTAINER & LAYOUT
+   ========================================= */
+.container {
+  max-width: 850px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  
+  /* Animation trigger */
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+h1, h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
+}
+
+/* =========================================
+   FORMS & INPUTS
+   ========================================= */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 450px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 5px;
+  display: block;
+}
+
+.input-field {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #f9fafb;
+}
+
+.input-field:focus {
+  border-color: var(--primary-color);
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+textarea.input-field {
+  height: 120px;
+  resize: vertical;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+.btn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.5px;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+}
+
+.btn-add {
+  background: linear-gradient(135deg, var(--secondary-color), #db2777);
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+}
+
+.btn-add:hover {
+  animation: pulse 1.5s infinite;
+}
+
+.btn-secondary {
+  background-color: #9ca3af;
+}
+
+/* =========================================
+   IMAGES
+   ========================================= */
+.img-preview {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  align-self: center;
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* =========================================
+   GALLERY GRID
+   ========================================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-img {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  margin: 15px 0 5px;
+  color: var(--text-dark);
+}
+
+.card p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   DETAILS PAGE
+   ========================================= */
+.detail-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  text-align: left;
+  background: white;
+  padding: 0; /* Reset padding */
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.detail-img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+}
+
+.detail-img:hover {
+  transform: rotate(2deg) scale(1.02);
+}
+
+.detail-info {
+  flex: 1;
+  background: #f9fafb;
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.detail-info p {
+  font-size: 1.1rem;
+  margin: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+.detail-info strong {
+  color: var(--primary-color);
+  margin-right: 8px;
+}
+/* Add this to your existing App.css */
+
+.btn-warning {
+  background: linear-gradient(135deg, #f59e0b, #d97706); /* Amber/Orange */
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+  color: white;
+  margin-right: 10px; /* Space between Edit and Back buttons */
+}
+
+.btn-warning:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
+}
+/* =========================================
+   1. DYNAMIC VARIABLES & COLOR FUNCTIONS
+   ========================================= */
+:root {
+  /* Core Colors */
+  --primary: #6366f1;       /* Indigo */
+  --primary-dark: #4338ca;
+  --secondary: #ec4899;     /* Pink */
+  --accent: #8b5cf6;        /* Violet */
+  --success: #10b981;       /* Green */
+  --warning: #f59e0b;       /* Orange */
+  
+  /* Backgrounds */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  
+  /* Shadows */
+  --shadow-soft: 0 10px 30px -10px rgba(99, 102, 241, 0.3);
+  --shadow-hover: 0 20px 40px -10px rgba(99, 102, 241, 0.5);
+  
+  /* Transitions */
+  --bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* =========================================
+   2. GLOBAL ANIMATED BACKGROUND
+   ========================================= */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: #1f2937;
+  
+  /* Animated Gradient Background */
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =========================================
+   3. GLASSMORPHISM CONTAINER
+   ========================================= */
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  
+  /* Glass Effect */
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  
+  /* Entry Animation */
+  animation: floatUp 0.8s var(--bounce) forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+@keyframes floatUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   4. INPUTS WITH ANIMATED FOCUS
+   ========================================= */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+label {
+  font-weight: 700;
+  color: #4b5563;
+  margin-bottom: 5px;
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: #f3f4f6;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Focus Animation: Border expands with color */
+.input-field:focus {
+  background: #fff;
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+  transform: scale(1.02);
+}
+
+textarea.input-field {
+  height: 120px;
+  resize: none;
+}
+
+/* =========================================
+   5. BUTTONS: HOVER, CLICK & RIPPLE
+   ========================================= */
+.btn {
+  padding: 14px 30px;
+  border: none;
+  border-radius: 50px; /* Pill shape */
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s var(--bounce);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+/* Button Types */
+.btn-primary {
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.btn-success {
+  background: linear-gradient(45deg, #10b981, #059669);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.btn-warning {
+  background: linear-gradient(45deg, var(--warning), #d97706);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+  margin-right: 10px;
+}
+
+.btn-secondary {
+  background: #9ca3af;
+}
+
+.btn-add {
+  background: linear-gradient(45deg, var(--secondary), #db2777);
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+  margin-bottom: 25px;
+}
+
+/* --- Action 1: Hover State --- */
+.btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  filter: brightness(1.1);
+  box-shadow: var(--shadow-hover);
+}
+
+/* --- Action 2: Active Click State (The "Press" feel) --- */
+.btn:active {
+  transform: translateY(1px) scale(0.95);
+  box-shadow: none;
+}
+
+/* --- Action 3: Shine Animation on Hover --- */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: 0.5s;
+}
+
+.btn:hover::after {
+  left: 100%;
+}
+
+/* =========================================
+   6. GALLERY CARDS: 3D TILT & ZOOM
+   ========================================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  perspective: 1000px; /* Required for 3D effect */
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Card Hover: Lift up */
+.card:hover {
+  transform: translateY(-10px) rotateX(5deg);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  z-index: 2;
+}
+
+.card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.5s ease;
+}
+
+/* Image Zoom inside Card */
+.card:hover .card-img {
+  transform: scale(1.08);
+}
+
+.card h3 {
+  margin: 12px 0 5px;
+  color: var(--primary-dark);
+}
+
+/* =========================================
+   7. DETAILS PAGE
+   ========================================= */
+.detail-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative colored bar on the left */
+.detail-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 6px;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+}
+
+.detail-img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%; /* Circle Image */
+  border: 5px solid #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: pulseImage 2s infinite;
+}
+
+/* Pulse animation for the profile image */
+@keyframes pulseImage {
+  0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(99, 102, 241, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+}
+
+.detail-info p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  border-bottom: 1px dashed #e5e7eb;
+  padding-bottom: 8px;
+}
+
+/* =========================================
+   8. UPLOAD PREVIEW ANIMATION
+   ========================================= */
+.img-preview {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 10px auto;
+  border: 4px solid var(--primary);
+  animation: popIn 0.5s var(--bounce);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
